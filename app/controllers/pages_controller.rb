@@ -57,7 +57,7 @@ class PagesController < ApplicationController
     }
 
     load_artists(songkick[:resultsPage][:results][:event][0][:performance])
-
+    # raise
   end
 
   private

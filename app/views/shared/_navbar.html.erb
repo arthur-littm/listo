@@ -1,6 +1,14 @@
 <div class="listo-nav">
   <i class="fas fa-music"></i>
-
-  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+  <% if user_signed_in? %>
+  <div>
+    <%= current_user.email %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+    <% end %>
+  </div>
+  <% else %>
+    <%= link_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path %>
+  <% end %>
 </div>
 
