@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'a996933e28539e139e2350050df0d3395f1dcdebceaf06fd7ee46b133611ea4ba7b59d6df6eae61818c08d7a0d2922f164c97bdb9010b12aa0570e2db697172e'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -257,6 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  # config.omniauth :spotify, ENV['spotify_client_id'], ENV['spotify_client_secret'], scope: 'playlist-read-private user-read-private user-read-email'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

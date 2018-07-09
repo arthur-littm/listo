@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+
     songkick = {
       "resultsPage": {
         "results": {
@@ -54,7 +55,17 @@ class PagesController < ApplicationController
         "page": 1
       }
     }
-    @artists = songkick[:resultsPage][:results][:event][0][:performance]
-    @event = songkick[:resultsPage][:results][:event][0]
+
+    load_artists(songkick[:resultsPage][:results][:event][0][:performance])
+
+  end
+
+  private
+
+  def load_artists(songkick_results)
+    @artists = []
+    songkick_results.each do |artist|
+      @artists << RSpotify::Artist.search(artist[:displayName]).first
+    end
   end
 end

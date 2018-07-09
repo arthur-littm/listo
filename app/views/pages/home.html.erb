@@ -1,8 +1,11 @@
-<h1>Pages#home</h1>
-<%= @event %>
-<%= @artists %>
-<% @artists.each do |artist_hash| %>
-  <div class="card">
-    <h2><%= artist_hash[:displayName] %></h2>
+<div class="container">
+  <div class="row">
+    <% @artists.each do |artist| %>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="card" style="background-image: url(<%= artist.images.first["url"] %>)">
+        <h2><%= artist.name %></h2>
+      </div>
+    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

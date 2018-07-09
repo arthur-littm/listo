@@ -6,7 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
 module Listo
   class Application < Rails::Application
     config.generators do |generate|
@@ -23,5 +22,3 @@ module Listo
     # the framework and any gems in your application.
   end
 end
-
-# RSpotify::authenticate(ENV["spotify_client_id"], ENV["spotify_client_secret"])
