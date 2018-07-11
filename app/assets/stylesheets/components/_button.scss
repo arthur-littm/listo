@@ -1,0 +1,19 @@
+.btn-listo {
+  border: 1px solid $primary;
+  border-radius: 2px;
+  padding: 8px 16px;
+  color: $primary;
+  transition: .3s;
+  background: $dark;
+}
+
+.btn-listo:hover {
+  color: $dark;
+  background: $primary;
+}
+
+.btn-lg {
+  font-size: 30px;
+  padding: 16px 24px;
+  border: 2px solid $primary;
+}

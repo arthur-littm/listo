@@ -1,0 +1,13 @@
+#artists-selection {
+  .btn-listo {
+    margin: 20px auto;
+  }
+}
+
+.festival-details {
+  text-align: center;
+  h2 strong {
+    box-shadow: inset 0px -20px $primary;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+}

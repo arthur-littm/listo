@@ -1,6 +1,13 @@
-<%= form_tag playlist_path do %>
-  <%= hidden_field_tag 'festival_name', params[:searched_event] %>
-  <div class="container">
+<div class="container" id="artists-selection">
+  <div class="festival-details">
+    <h4>SELECT YOUR FAVORITE ARTISTS AT</h4>
+    <h2><strong><%= @festival.name.upcase %></strong></h2>
+  </div>
+  <%= form_tag playlist_path do %>
+    <div class="text-center">
+      <%= submit_tag "GENERATE PLAYLIST", class: "btn btn-listo" %>
+    </div>
+    <%= hidden_field_tag 'festival_name', params[:searched_event] %>
     <div class="row">
       <% @artists.each do |artist| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
@@ -10,8 +17,7 @@
         </div>
       </div>
       <% end %>
-      <%= submit_tag :go %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 

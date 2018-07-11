@@ -1,0 +1,19 @@
+.banner {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-search {
+  text-align: center;
+  input {
+    background: transparent;
+    border: none;
+    font-size: 50px;
+    width: 50vw;
+    &:focus {
+      outline: none;
+    }
+  }
+}

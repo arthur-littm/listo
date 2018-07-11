@@ -1,15 +1,16 @@
 <div class="listo-nav">
-  <i class="fas fa-music"></i>
-  <% if user_signed_in? %>
-  <div>
-    <%= current_user.name_or_email %>
-    <%= link_to destroy_user_session_path, method: :delete do %>
-      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-    <% end %>
-    <%= image_tag current_user.spotify_photo_url, class: "avatar" %>
-  </div>
-  <% else %>
-    <%= link_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path %>
+  <%= link_to root_path, class: "left" do %>
+    <%= image_tag "logo.svg" %>
+    <span>Listo App</span>
   <% end %>
+  <div class="right">
+    <% if user_signed_in? %>
+      <%= current_user.name_or_email %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <%= image_tag current_user.spotify_photo_url, class: "avatar" %>
+    <% else %>
+      <%= link_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path %>
+    <% end %>
+  </div>
 </div>
 

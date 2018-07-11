@@ -1,10 +1,14 @@
-<div class="container text-center">
-  <h1>Listo</h1>
-  <p>Generate a playlist for your festival, instantly.</p>
+<div class="banner">
+  <h3>GENERATE A PLAYLIST FOR YOUR NEXT FESTIVAL.</h3>
+</div>
+<div class="home-search">
+  <% if user_signed_in? %>
+    <%= form_tag artists_path, method: :get do %>
+      <%= text_field_tag 'searched_event', nil, placeholder: 'Type the name of your event', autofocus: true, autocomplete: false %>
+      <%= submit_tag "search", hidden: true %>
+    <% end %>
+  <% else %>
+    <%= link_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, class: "btn btn-listo btn-lg" %>
 
-  <%= form_tag artists_path, method: :get do %>
-    <%= text_field_tag 'searched_event', nil, placeholder: 'Search event...' %>
-    <%= submit_tag "search", hidden: true %>
   <% end %>
-
 </div>

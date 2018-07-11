@@ -6,16 +6,14 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 $dark;
+$text-color:              $light;
 $font-size-base: 18px;
 
-// Colors
-$gray-base:       $gray;
-$brand-primary:   $blue;
-$brand-success:   $green;
-$brand-info:      $yellow;
-$brand-danger:    $red;
-$brand-warning:   $orange;
+h1, h2, h3, h4 {
+  letter-spacing: 4px !important;
+}
+
 
 // Buttons & inputs' radius
 $border-radius-base:  2px;
@@ -29,14 +27,14 @@ $border-radius-small: 2px;
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: $red;
+  color: $primary;
 }
 
 .was-validated .form-control:invalid,
 .form-control.is-invalid,
 .was-validated .custom-select:invalid,
 .custom-select.is-invalid {
-  border-color: $red;
+  border-color: $primary;
 }
 
 .was-validated .form-control:invalid ~ .invalid-feedback,

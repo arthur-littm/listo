@@ -3,6 +3,7 @@ ruby '2.4.4'
 
 gem 'rspotify'
 gem 'nokogiri'
+gem 'pg_search'
 
 gem 'bootsnap', require: false
 gem 'devise'

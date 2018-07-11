@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="332px" height="512px" viewBox="0 0 332 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>sound-box</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-96.000000, -77.000000)">
+        <g id="sound-box" transform="translate(96.000000, 77.000000)" fill-rule="nonzero">
+            <rect id="Rectangle-path" fill="#595D73" x="0.668" y="0" width="331.071" height="512"></rect>
+            <circle id="Oval" fill="#767C9C" cx="166.209" cy="118.909" r="44.925"></circle>
+            <circle id="Oval" fill="#FFFFFF" cx="166.209" cy="346.465" r="108.646"></circle>
+            <path d="M166.204,294.706 C137.664,294.706 114.445,317.925 114.445,346.464 C114.445,375.004 137.664,398.223 166.204,398.223 C194.744,398.223 217.963,375.004 217.963,346.464 C217.964,317.925 194.744,294.706 166.204,294.706 Z" id="Shape" fill="#767C9C"></path>
+        </g>
+    </g>
+</svg>
