@@ -8,4 +8,13 @@
     </div>
     <% end %>
   </div>
+  <%= form_tag playlist_path do %>
+    <% @artists.each do |artist| %>
+      <div>
+        <span><%= artist.name %></span>
+        <%= check_box_tag 'artist_names[]', artist.name %>
+      </div>
+    <% end %>
+    <%= submit_tag :go %>
+  <% end %>
 </div>

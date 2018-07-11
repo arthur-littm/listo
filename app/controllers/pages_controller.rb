@@ -60,6 +60,11 @@ class PagesController < ApplicationController
     # raise
   end
 
+  def playlist_create
+    # spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    # playlist = spotify_user.create_playlist!('my-awesome-playlist')
+    raise
+  end
   private
 
   def load_artists(songkick_results)
