@@ -2,75 +2,59 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+  end
 
-    songkick = {
-      "resultsPage": {
-        "results": {
-          "event": [
-            {
-              "type": "Festival",
-              "displayName": "Lovebox 2018",
-              "venue": {
-                "displayName": "Gunnersbury Park, London",
-                "id": 17522
-              },
-              "location": {
-                city: "London, UK",
-                lat: nil,
-                lng: nil
-              },
-              "start": {
-                "date": "2018-07-13",
-                "time": "19:00:00"
-              },
-              "performance": [
-                {
-                "displayName": "Childish Gambino",
-                "id": 3681591
-                },
-                {
-                "displayName": "Skepta",
-                "id": 3681591
-                },
-                {
-                "displayName": "Wu-tang clan",
-                "id": 3681591
-                },
-                {
-                "displayName": "Bonobo",
-                "id": 3681591
-                },
-                {
-                "displayName": "Loco dice",
-                "id": 3681591
-                }
-              ],
-              "uri": "http://www.songkick.com/concerts/2342061-pixies-at-o2-academy-brixton",
-              "id": 2342061
-            },
-          ]
-        },
-        "totalEntries": 2,
-        "perPage": 50,
-        "page": 1
-      }
-    }
-
-    load_artists(songkick[:resultsPage][:results][:event][0][:performance])
-    # raise
+  def artists
+    load_artists(scrape_songkick(params[:searched_event]))
   end
 
   def playlist_create
-    # spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-    # playlist = spotify_user.create_playlist!('my-awesome-playlist')
-    raise
+    spotify_user = RSpotify::User.new(current_user.spotify_hash)
+    name = "#{params[:festival_name].capitalize} - listo"
+    playlist = spotify_user.create_playlist!(name)
+
+    songs = []
+    artists_count = params[:artist_names].count
+    songs_per_artists = 40 / artists_count
+
+    params[:artist_names].each do |artist|
+      artist = RSpotify::Artist.search(artist).first
+      if artist
+        top_songs = artist.top_tracks(:US).sample(songs_per_artists)
+        songs << top_songs
+      end
+    end
+
+    playlist.add_tracks!(songs.flatten.shuffle)
+
   end
+
   private
 
-  def load_artists(songkick_results)
+  def scrape_songkick(search)
+    require 'open-uri'
+    base_url = "https://www.songkick.com"
+    url = "#{base_url}/search?page=1&query=#{search}&type=upcoming"
+    doc = Nokogiri::HTML(open(url))
+    festival = doc.search(".event.festival-instance").first
+    festival_url = base_url + festival.search(".summary > a").attr("href")
+    festival_doc = Nokogiri::HTML(open(festival_url))
+    artists = []
+    festival_doc.search("#lineup .festival li").first(5).each do |list_item|
+      artists << list_item.text.strip
+    end
+    return artists
+  end
+
+  def load_artists(artists)
     @artists = []
-    songkick_results.each do |artist|
-      @artists << RSpotify::Artist.search(artist[:displayName]).first
+    artists.each do |artist|
+      begin
+        s_artist = RSpotify::Artist.search(artist).first
+        @artists << s_artist if s_artist
+      rescue
+        puts "-------- ERROR! --------"
+      end
     end
   end
 end

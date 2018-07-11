@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.4'
 
 gem 'rspotify'
+gem 'nokogiri'
 
 gem 'bootsnap', require: false
 gem 'devise'

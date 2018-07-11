@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  serialize :spotify_hash, JSON
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +11,13 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.name = auth.info.display_name
+      user.spotify_photo_url = auth.info.images.first.url
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def name_or_email
+    self.name || self.email
   end
 end

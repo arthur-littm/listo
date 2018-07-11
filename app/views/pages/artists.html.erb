@@ -1,0 +1,17 @@
+<%= form_tag playlist_path do %>
+  <%= hidden_field_tag 'festival_name', params[:searched_event] %>
+  <div class="container">
+    <div class="row">
+      <% @artists.each do |artist| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="card" style="background-image: url(<%= artist.images.first["url"] %>)">
+          <h2><%= artist.name %></h2>
+          <%= check_box_tag 'artist_names[]', artist.name %>
+        </div>
+      </div>
+      <% end %>
+      <%= submit_tag :go %>
+    </div>
+  </div>
+<% end %>
+
