@@ -4,14 +4,19 @@ class PagesController < ApplicationController
   def home
   end
 
+  def successful
+    @festival = Festival.find(params[:id])
+  end
+
   def artists
     @festival = Festival.search_by_festival_name(params[:searched_event]).first
     spotify_artists(get_artists(params[:searched_event]))
   end
 
   def playlist_create
+    @festival = Festival.search_by_festival_name(params[:searched_event]).first
     spotify_user = RSpotify::User.new(current_user.spotify_hash)
-    name = "#{params[:festival_name].capitalize} - listo"
+    name = "#{@festival.name} (by listo 🔈)"
     playlist = spotify_user.create_playlist!(name)
 
     songs = []
@@ -27,7 +32,7 @@ class PagesController < ApplicationController
     end
 
     playlist.add_tracks!(songs.flatten.shuffle)
-
+    redirect_to successful_path(@festival)
   end
 
   private

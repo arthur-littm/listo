@@ -5,19 +5,24 @@
   </div>
   <%= form_tag playlist_path do %>
     <div class="text-center">
-      <%= submit_tag "GENERATE PLAYLIST", class: "btn btn-listo" %>
+      <%= submit_tag "SELECT AT LEAST 2 ARTISTS", class: "btn btn-listo disabled", id: "btn-js", data: {disable_with: "GENERATING YOUR PLAYLIST..."}, disabled: true %>
     </div>
-    <%= hidden_field_tag 'festival_name', params[:searched_event] %>
+    <%= hidden_field_tag 'festival_name', @festival.name %>
     <div class="row">
-      <% @artists.each do |artist| %>
+      <% @artists.each_with_index do |artist, index| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="card" style="background-image: url(<%= artist.images.first["url"] %>)">
-          <h2><%= artist.name %></h2>
-          <%= check_box_tag 'artist_names[]', artist.name %>
-        </div>
+        <label for="artist_names_<%= index %>" class="card artist-checkbox-js" style="background-image: url(<%= artist.images.first["url"] %>)">
+          <div class="card-info">
+            <h2><%= artist.name.upcase %></h2>
+            <span><%= artist.genres.first(3).to_sentence.upcase %></span>
+          </div>
+
+          <input type="checkbox" name="artist_names[]" id="artist_names_<%= index %>" value="<%= artist.name %>" class="hidden checkbox">
+        </label>
       </div>
       <% end %>
     </div>
   <% end %>
 </div>
 
+<%= javascript_pack_tag "artists" %>
