@@ -12,7 +12,10 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class="min-height-cont">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

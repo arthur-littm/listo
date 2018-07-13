@@ -1,0 +1,42 @@
+.footer {
+  height: 90px;
+  position: relative;
+}
+
+.min-height-cont {
+  min-height: calc(100vh - 70px - 90px);
+}
+
+.sponsor {
+  text-align: center;
+  opacity: .5;
+  h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+.brands {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    // margin: 0;
+    font-size: 12px;
+  }
+  img {
+    width: 150px;
+    margin: 0 24px;
+  }
+}
+
+.author {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+  a {
+    color: $primary;
+    text-decoration: none;
+  }
+}
