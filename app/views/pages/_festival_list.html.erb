@@ -1,0 +1,6 @@
+<% found_festivals.each do |festival| %>
+  <%= link_to artists_path(festival.id), class: "festival-card" do %>
+    <span class="festival-name"><%= festival.name %></span>
+    <span class="festival-year"><%= festival.year %></span>
+  <% end %>
+<% end %>

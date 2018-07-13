@@ -1,0 +1,10 @@
+function refreshResults(innerHTML) {
+  const festivalContainer = document.getElementById('festivalContainer');
+  festivalContainer.innerHTML = innerHTML;
+}
+
+<% if @found_festivals.any? %>
+  refreshResults('<%= j render "pages/festival_list", found_festivals: @found_festivals %>');
+<% else %>
+  refreshResults('<div class="no-festival-found"><h4>NO FESTIVAL FOUND 😢</h4></div>');
+<% end %>

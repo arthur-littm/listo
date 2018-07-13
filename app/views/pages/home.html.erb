@@ -3,12 +3,16 @@
 </div>
 <div class="home-search">
   <% if user_signed_in? %>
-    <%= form_tag artists_path, method: :get do %>
+    <%= form_tag search_path, method: :get, remote: true do %>
       <%= text_field_tag 'searched_event', nil, placeholder: 'Type the name of your event', autofocus: true, autocomplete: false %>
       <%= submit_tag "search", hidden: true %>
     <% end %>
   <% else %>
     <%= link_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, class: "btn btn-listo btn-lg" %>
-
+  <% end %>
+</div>
+<div class="found-festivals container" id="festivalContainer">
+  <% if @found_festivals %>
+    <%= render "festival_list", found_festivals: @found_festivals %>
   <% end %>
 </div>
