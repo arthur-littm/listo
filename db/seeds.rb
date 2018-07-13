@@ -54,10 +54,10 @@ def get_artists_of(festival, event_from_songkick)
 end
 
 # LONDON ✅
-# get_festivals_of(51.50, -0.11)
+get_festivals_of(51.50, -0.11)
 
 # PARIS ✅
-# get_festivals_of(48.85, 2.34)
+get_festivals_of(48.85, 2.34)
 
 # BERLIN ✅
 get_festivals_of(52.52, 13.40)
