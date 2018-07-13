@@ -50,7 +50,11 @@ class PagesController < ApplicationController
   def spotify_artists(artist_array)
     @artists = []
     artist_array.each do |artist|
-      s_artist = RSpotify::Artist.search(artist.name).first
+      begin
+        s_artist = RSpotify::Artist.search(artist.name).first
+      rescue RestClient::BadGateway
+        s_artist = false
+      end
       @artists << s_artist if s_artist
     end
   end

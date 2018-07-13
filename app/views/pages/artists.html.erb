@@ -11,7 +11,12 @@
     <div class="row">
       <% @artists.each_with_index do |artist, index| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <label for="artist_names_<%= index %>" class="card artist-checkbox-js" style="background-image: url(<%= artist.images.first["url"] %>)">
+        <% if artist.images.any? %>
+          <% img_url = artist.images.first["url"] %>
+        <% else %>
+          <% img_url = "https://images.pexels.com/photos/9137/night-vintage-music-bokeh.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" %>
+        <% end %>
+        <label for="artist_names_<%= index %>" class="card artist-checkbox-js" style="background-image: url(<%= img_url %>)">
           <div class="card-info">
             <h2><%= artist.name.upcase %></h2>
             <span><%= artist.genres.first(3).to_sentence.upcase %></span>

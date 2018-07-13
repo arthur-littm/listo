@@ -7,10 +7,6 @@
   background: $dark;
 }
 
-.btn-listo-white {
-  background: $light;
-}
-
 .btn-listo:hover {
   color: $dark;
   background: $primary;
@@ -20,4 +16,11 @@
   font-size: 30px;
   padding: 16px 24px;
   border: 2px solid $primary;
+}
+
+.btn-listo-white {
+  background: $light;
+  &:hover {
+    color: $light;
+  }
 }

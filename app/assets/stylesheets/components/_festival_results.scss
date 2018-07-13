@@ -15,8 +15,6 @@
   align-items: center;
   border-radius: 3px;
   margin-bottom: 8px;
-  color: $light;
-  text-decoration: none;
   .festival-name {
     font-size: 24px;
   }
@@ -25,9 +23,15 @@
     font-size: 18px;
     opacity: .7;
   }
+  .link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
   &:hover {
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    color: $light;
-    text-decoration: none;
   }
 }
