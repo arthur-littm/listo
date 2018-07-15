@@ -1,10 +1,20 @@
+require "open-uri"
+
 class City < ApplicationRecord
   has_many :festival
 
   validates :name, uniqueness: true
   validates :name, :country, :lng, :lat, presence: true
 
-  after_create :search_festivals
+  after_save :async_update # Run on create & update
+
+  def async_update
+    RefreshFestivalsJob.perform_later
+  end
+
+  def refresh_festivals
+    search_festivals
+  end
 
   private
 
