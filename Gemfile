@@ -5,6 +5,9 @@ gem 'rspotify'
 gem 'nokogiri'
 gem 'pg_search'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'figaro'

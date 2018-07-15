@@ -7,6 +7,7 @@ class Festival < ApplicationRecord
     }
   has_many :festival_artists
   has_many :artists, through: :festival_artists
+  belongs_to :city
 
   validates :name, uniqueness: { scope: :year }
   validates :name, :year, presence: true
