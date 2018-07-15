@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="332px" height="512px" viewBox="0 0 332 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="491px" height="199px" viewBox="0 0 491 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>sound-box</title>
+    <title>Group 2</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-96.000000, -77.000000)">
-        <g id="sound-box" transform="translate(96.000000, 77.000000)" fill-rule="nonzero">
-            <rect id="Rectangle-path" fill="#595D73" x="0.668" y="0" width="331.071" height="512"></rect>
-            <circle id="Oval" fill="#767C9C" cx="166.209" cy="118.909" r="44.925"></circle>
-            <circle id="Oval" fill="#FFFFFF" cx="166.209" cy="346.465" r="108.646"></circle>
-            <path d="M166.204,294.706 C137.664,294.706 114.445,317.925 114.445,346.464 C114.445,375.004 137.664,398.223 166.204,398.223 C194.744,398.223 217.963,375.004 217.963,346.464 C217.964,317.925 194.744,294.706 166.204,294.706 Z" id="Shape" fill="#767C9C"></path>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-212.000000, -602.000000)">
+        <g id="Group-2" transform="translate(212.000000, 602.000000)">
+            <g id="sound-box" fill-rule="nonzero">
+                <rect id="Rectangle-path" fill="#FFAD05" x="0" y="0" width="129" height="199" rx="2"></rect>
+                <circle id="Oval" fill="#4D505F" cx="64.5" cy="47.5" r="27.5"></circle>
+                <circle id="Oval" fill="#FFAD05" cx="65" cy="47" r="15"></circle>
+                <circle id="Oval" fill="#4D505F" cx="64" cy="134" r="42"></circle>
+                <path d="M64.5,107 C49.3364536,107 37,119.336573 37,134.499734 C37,149.663427 49.3364536,162 64.5,162 C79.6635464,162 92,149.663427 92,134.499734 C92.0005313,119.336573 79.6635464,107 64.5,107 Z" id="Shape" fill="#FFAD05"></path>
+            </g>
+            <text id="Listo" font-family="Montserrat-Bold, Montserrat" font-size="140" font-weight="bold" letter-spacing="-3" fill="#FFAD05">
+                <tspan x="154" y="153">List</tspan>
+                <tspan x="403.94" y="153">o</tspan>
+            </text>
         </g>
     </g>
 </svg>
