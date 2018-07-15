@@ -53,45 +53,72 @@ def get_artists_of(festival, event_from_songkick)
   end
 end
 
-# LONDON ✅
-london = City.create(name: "London", country: "United Kingdom", lat: "51.50", lng: "-0.11")
-# get_festivals_of(london)
+def create_city(name, country)
+  api = "https://api.songkick.com/api/3.0/search/locations.json?query=#{name}&apikey=#{ENV['songkick_api_key']}"
+  response = JSON.parse(open(api).read)
 
-# PARIS ✅
-paris = City.create(name: "Paris", country: "France", lat: "48.85", lng: "2.34")
-# get_festivals_of(paris)
+  return "No results" if response["resultsPage"]["results"].empty?
 
-# BERLIN ✅
-berlin = City.create(name: "Berlin", country: "Germany", lat: "52.52", lng: "13.40")
-# get_festivals_of(berlin)
+  city_hash = response["resultsPage"]["results"]["location"].find do |city_songkick|
+    city_songkick["city"]["country"]["displayName"] == country
+  end
 
-# MARSEILLE
-marseille = City.create(name: "Marseille", country: "France", lat: "43.30", lng: "5.40")
-# get_festivals_of(marseille)
+  if city_hash.nil?
+    puts "CITY info not found"
+  else
+    city = City.where(name: city_hash["city"]["displayName"]).first
+    if city.nil?
+      # binding.pry
+      city = City.create(name: city_hash["city"]["displayName"], country: city_hash["city"]["country"]["displayName"], lat: city_hash["city"]["lat"], lng: city_hash["city"]["lng"])
+      puts "Create new city #{city.name}"
+      get_festivals_of(city)
+    end
+  end
+end
 
-# EDINBURGH
-edinburgh = City.create(name: "Edinburgh", country: "United Kingdom", lat: "55.95", lng: "-3.18")
-# get_festivals_of(edinburgh)
+def get_city_info(name)
+  api = "https://api.songkick.com/api/3.0/search/locations.json?query=#{name}&apikey=#{ENV['songkick_api_key']}"
+  response = JSON.parse(open(api).read)
 
-# LIVERPOOL
-liverpool = City.create(name: "Liverpool", country: "United Kingdom", lat: "53.41", lng: "-2.97")
-# get_festivals_of(liverpool)
+  p response
+end
 
-# MANCHESTER
-manchester = City.create(name: "Manchester", country: "United Kingdom", lat: "53.48", lng: "-2.24")
-# get_festivals_of(manchester)
+# get_city_info("melbourne")
 
-# NEW ORLEANS
-new_orleans = City.create(name: "New Orleans", country: "United States", lat: "29.95", lng: "-90.07")
-# get_festivals_of(new_orleans)
+cities = [
+  { name: "London", country: "UK" },
+  { name: "Bristol", country: "UK" },
+  { name: "Manchester", country: "UK" },
+  { name: "Liverpool", country: "UK" },
+  { name: "Sheffield", country: "UK" },
+  { name: "Edinburgh", country: "UK" },
+  { name: "Birghton", country: "UK" },
+  { name: "Leeds", country: "UK" },
+  { name: "Glasgow", country: "UK" },
+  { name: "Leicester", country: "UK" },
+  { name: "Nottingham", country: "UK" },
+  { name: "Hackney", country: "UK" },
+  { name: "Paris", country: "France" },
+  { name: "Marseille", country: "France" },
+  { name: "Bordeaux", country: "France" },
+  { name: "Berlin", country: "Germany" },
+  { name: "New Orleans", country: "US" },
+  { name: "Austin", country: "US" },
+  { name: "New York", country: "US" },
+  { name: "Miami", country: "US" },
+  { name: "Boston", country: "US" },
+  { name: "Nashville", country: "US" },
+  { name: "Atlanta", country: "US" },
+  { name: "Milan", country: "Italy" },
+  { name: "Torino", country: "Italy" },
+  { name: "Melbourne", country: "Australia" },
+  { name: "Perth", country: "Australia" },
+  { name: "Sydney", country: "Australia" }
+]
 
-# AUSTIN
-austin = City.create(name: "Austin", country: "United States", lat: "30.14", lng: "-97.83")
-# get_festivals_of(austin)
-
-# BRISTOL
-bristol = City.create(name: "Bristol", country: "United Kingdom", lat: "51.45", lng: "-2.58")
-# get_festivals_of(bristol)
+cities.each do |city_info|
+  create_city(city_info[:name], city_info[:country])
+end
 
 # CLEANING METHODS
 def clean_festival_with_low_number_of_artists
@@ -106,5 +133,5 @@ def clean_festival_with_low_number_of_artists
   end
 end
 
-# clean_festival_with_low_number_of_artists
+clean_festival_with_low_number_of_artists
 

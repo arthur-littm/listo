@@ -1,7 +1,11 @@
 class Festival < ApplicationRecord
   include PgSearch
-  pg_search_scope :search_by_festival_name,
+  pg_search_scope :search_by_festival_or_artist,
     against: [ :name ],
+    associated_against: {
+      artists: [ :name ],
+      city: [ :name ]
+    },
     using: {
       tsearch: { prefix: true }
     }

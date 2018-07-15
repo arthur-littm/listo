@@ -4,7 +4,7 @@
 <div class="home-search">
   <% if user_signed_in? %>
     <%= form_tag search_path, method: :get, remote: true, id: "search-form" do %>
-      <%= text_field_tag 'searched_event', nil, placeholder: 'Type the name of your event', autofocus: true, autocomplete: false %>
+      <%= text_field_tag 'searched_event', nil, placeholder: 'Type the name of an event, artist or city', autofocus: true, autocomplete: false %>
       <%= submit_tag "search", hidden: true %>
     <% end %>
   <% else %>

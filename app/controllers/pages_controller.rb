@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def search
     if params[:searched_event]
-      @found_festivals = Festival.search_by_festival_name(params[:searched_event])
+      @found_festivals = Festival.search_by_festival_or_artist(params[:searched_event])
     end
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def playlist_create
-    @festival = Festival.search_by_festival_name(params[:festival_name]).first
+    @festival = Festival.search_by_festival_or_artist(params[:festival_name]).first
     spotify_user = RSpotify::User.new(current_user.spotify_hash)
     name = "#{@festival.name} (by listo 🔈)"
     playlist = spotify_user.create_playlist!(name)
