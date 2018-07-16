@@ -12,7 +12,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.display_name
-      user.spotify_photo_url = auth.info.images.first.url
+      user.spotify_photo_url = auth.info.images.first&.url
       user.password = Devise.friendly_token[0,20]
     end
   end
